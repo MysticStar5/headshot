@@ -71,6 +71,7 @@ export async function POST(request: Request) {
       console.error({ creditError });
       return NextResponse.json(
         {
+          error: 'creditError',
           message: "Something went wrong!",
         },
         { status: 500 }
@@ -90,6 +91,7 @@ export async function POST(request: Request) {
         console.error({ errorCreatingCredits });
         return NextResponse.json(
           {
+            error: 'errorCreatingCredits',
             message: "Something went wrong!",
           },
           { status: 500 }
@@ -196,6 +198,7 @@ export async function POST(request: Request) {
       console.error("modelError: ", modelError);
       return NextResponse.json(
         {
+          error: 'modelError',
           message: "Something went wrong!",
         },
         { status: 500 }
@@ -216,6 +219,7 @@ export async function POST(request: Request) {
       console.error("samplesError: ", samplesError);
       return NextResponse.json(
         {
+          error: 'samplesError',
           message: "Something went wrong!",
         },
         { status: 500 }
@@ -237,6 +241,7 @@ export async function POST(request: Request) {
         console.error({ updateCreditError });
         return NextResponse.json(
           {
+            error: 'updateCreditError',
             message: "Something went wrong!",
           },
           { status: 500 }

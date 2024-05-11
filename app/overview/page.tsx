@@ -25,5 +25,7 @@ export default async function Index() {
     )
     .eq("user_id", user.id);
 
+  console.log(models, user.id);
+
   return <ClientSideModelsList serverModels={models ?? []} />;
 }

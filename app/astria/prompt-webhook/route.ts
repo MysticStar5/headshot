@@ -61,6 +61,8 @@ export async function POST(request: Request) {
     );
   }
 
+  console.log(webhook_secret);
+
   if (webhook_secret.toLowerCase() !== appWebhookSecret?.toLowerCase()) {
     return NextResponse.json(
       {
@@ -70,6 +72,8 @@ export async function POST(request: Request) {
     );
   }
 
+  console.log(user_id);
+
   if (!user_id) {
     return NextResponse.json(
       {
@@ -78,6 +82,8 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+
+  console.log('test');
 
   const supabase = createClient<Database>(
     supabaseUrl as string,
@@ -95,6 +101,8 @@ export async function POST(request: Request) {
     data: { user },
     error,
   } = await supabase.auth.admin.getUserById(user_id);
+
+  console.log(error, user);
 
   if (error) {
     return NextResponse.json(

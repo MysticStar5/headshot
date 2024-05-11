@@ -41,22 +41,22 @@ export default async function Index({ params }: { params: { id: string } }) {
   const { data: samples } = await supabase.from("samples").select("*").eq("modelId", model.id);
 
   return (
-    <div id="train-model-container" className="w-full h-full">
-      <div className="flex flex-row gap-4">
+    <div id="train-model-container" className="w-full h-full px-[100px] py-[50px]">
+      <div className="flex flex-row w-1/2 gap-4">
         <Link href="/overview" className="text-xs w-fit">
-          <Button variant={"outline"} className="text-xs" size="sm">
+          <Button className="text-xs text-[#FEFEFE] bg-[#2c3031] hover:bg-[#232627]" size="sm">
             <FaArrowLeft className="mr-2" />
             Go Back
           </Button>
         </Link>
         <div className="flex flex-row gap-2 align-middle text-center items-center pb-4">
-          <h1 className="text-xl">{model.name}</h1>
+          <h1 className="text-xl text-[#FEFEFE]">{model.name}</h1>
           <div>
             <Badge
               variant={model.status === "finished" ? "default" : "secondary"}
               className="text-xs font-medium"
             >
-              {model.status === "processing" ? "training" : model.status }
+              {model.status === "processing" ? "training" : model.status}
               {model.status === "processing" && (
                 <Icons.spinner className="h-4 w-4 animate-spin ml-2 inline-block" />
               )}
