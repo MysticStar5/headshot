@@ -50,12 +50,14 @@ export default function TrainModelZone() {
     });
 
     if (button) {
-      button.on('success', () => {
+      button.on('success', (args: any): Promise<boolean | void> => {
         setPlayed(true);
+        return Promise.resolve(true);
       });
 
-      button.on('cancel', () => {
+      button.on('cancel', (args: any): Promise<boolean | void> => {
         setPlayed(true);
+        return Promise.resolve(true);
       });
 
       button.mount(el.current!);
