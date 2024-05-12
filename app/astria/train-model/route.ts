@@ -125,6 +125,8 @@ export async function POST(request: Request) {
     const promptWebhook = `https://${process.env.VERCEL_URL}/astria/prompt-webhook`;
     const promptWebhookWithParams = `${promptWebhook}?user_id=${user.id}&webhook_secret=${appWebhookSecret}`;
 
+    console.log(trainWenhookWithParams, promptWebhookWithParams);
+
     const API_KEY = astriaApiKey;
     const DOMAIN = "https://api.astria.ai";
 

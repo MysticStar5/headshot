@@ -180,7 +180,7 @@ export const Login = ({
                     <Input
                       type="email"
                       placeholder="Username or email"
-                      className="block font-sans font-[500] text-[14px] landing-[24px] text-[#6C727580] opacity-50 h-[52px] py-4 pl-[52px] pr-3.5 border-none outline-none bg-[#141718] ring-[#0084FF] autofill:bg-red-600"
+                      className="block font-sans font-[500] text-[14px] landing-[24px] text-white opacity-50 h-[52px] py-4 pl-[52px] pr-3.5 border-none outline-none bg-[#141718] ring-[#0084FF] autofill:bg-red-600"
                       {...register("email", {
                         required: true,
                         validate: {
@@ -210,7 +210,7 @@ export const Login = ({
                     <Input
                       type="password"
                       placeholder="Password"
-                      className="block font-sans font-[500] text-[14px] landing-[24px] text-[#6C727580] opacity-50 h-[52px] py-4 pl-[52px] pr-3.5 mb-2 border-none bg-[#141718] ring-[#0084FF]"
+                      className="block font-sans font-[500] text-[14px] landing-[24px] text-white opacity-50 h-[52px] py-4 pl-[52px] pr-3.5 mb-2 border-none bg-[#141718] ring-[#0084FF]"
                     />
                     {!signType && <><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute ml-4 my-3.5">
                       <path fillRule="evenodd" clipRule="evenodd" d="M7 8.6665C7 5.90508 9.23858 3.6665 12 3.6665C14.7614 3.6665 17 5.90508 17 8.6665V9.62511C17.2355 9.67672 17.4615 9.75186 17.68 9.86315C18.3072 10.1827 18.8171 10.6927 19.1367 11.3199C19.3428 11.7243 19.4249 12.1549 19.4632 12.6233C19.5 13.0743 19.5 13.6279 19.5 14.2987V15.5343C19.5 16.2051 19.5 16.7587 19.4632 17.2097C19.4249 17.6781 19.3428 18.1087 19.1367 18.5131C18.8171 19.1403 18.3072 19.6503 17.68 19.9699C17.2755 20.1759 16.8449 20.2581 16.3765 20.2963C15.9255 20.3332 15.3719 20.3332 14.7011 20.3332H9.29894C8.62812 20.3332 8.07448 20.3332 7.62348 20.2963C7.15507 20.2581 6.72448 20.1759 6.32003 19.9699C5.69283 19.6503 5.18289 19.1403 4.86331 18.5131C4.65724 18.1087 4.5751 17.6781 4.53683 17.2097C4.49998 16.7587 4.49999 16.2051 4.5 15.5343V14.2987C4.49999 13.6279 4.49998 13.0743 4.53683 12.6233C4.5751 12.1549 4.65724 11.7243 4.86331 11.3199C5.18289 10.6927 5.69283 10.1827 6.32003 9.86315C6.53845 9.75186 6.76449 9.67672 7 9.62511V8.6665ZM15.3333 8.6665V9.50119H8.66667V8.6665C8.66667 6.82556 10.1591 5.33317 12 5.33317C13.8409 5.33317 15.3333 6.82556 15.3333 8.6665ZM12.8333 14.0832C12.8333 13.6229 12.4602 13.2498 12 13.2498C11.5398 13.2498 11.1667 13.6229 11.1667 14.0832V15.7498C11.1667 16.2101 11.5398 16.5832 12 16.5832C12.4602 16.5832 12.8333 16.2101 12.8333 15.7498V14.0832Z" fill="#6C7275" fillOpacity="0.5" />
@@ -218,7 +218,7 @@ export const Login = ({
                       <Input
                         type="password"
                         placeholder="Confirm Password"
-                        className="block font-sans font-[500] text-[14px] landing-[24px] text-[#6C727580] opacity-50 h-[52px] py-4 pl-[52px] pr-3.5 mb-2 border-none bg-[#141718] ring-[#0084FF]"
+                        className="block font-sans font-[500] text-[14px] landing-[24px] text-white opacity-50 h-[52px] py-4 pl-[52px] pr-3.5 mb-2 border-none bg-[#141718] ring-[#0084FF]"
                       /></>}
                     {signType && <p className="font-sans font-[500] text-[14px] landing-[24px] text-[#0084FF] h-6 w-[118px]">Forgot Password?</p>}
                   </div>
