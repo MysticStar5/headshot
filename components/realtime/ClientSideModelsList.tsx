@@ -70,6 +70,7 @@ export default function ClientSideModelsList({
     };
   }, [supabase, models, setModels]);
 
+
   const router = useRouter();
   const handleRedirect = (id: number) => {
     router.push(`/overview/models/${id}`);
@@ -128,37 +129,39 @@ export default function ClientSideModelsList({
           </label>
         </div>
 
-        {models?.map(model => (
-          < div className="flex flex-col w-full rounded-md p-[12px] gap-[8px] hover:bg-[#343839]" onClick={() => handleRedirect(model.id)}>
-            <label className="flex flex-row ">
-              <input type="checkbox" className="w-[22px] h-[22px] mr-3" />
-              <p className="font-sans font-[600] text-[16px] landing-[24px] text-[#FEFEFE]">{model.name}</p>
-            </label>
-            {model.status != "processing" &&
-              <div className="flex flex-row p-[8px] pl-[36px]">
-                <Avatar key={model.samples[0].id} className="w-[128px] h-[128px]">
-                  <AvatarImage src={model.samples[0].uri} className="object-cover" />
-                </Avatar>
-                <Avatar key={model.samples[1].id} className="w-[128px] h-[128px]">
-                  <AvatarImage src={model.samples[1].uri} className="object-cover" />
-                </Avatar>
+        {models?.map(model => {
+          return (
+            <div className="flex flex-col w-full rounded-md p-[12px] gap-[8px] hover:bg-[#343839]" onClick={() => handleRedirect(model.id)}>
+              <label className="flex flex-row ">
+                <input type="checkbox" className="w-[22px] h-[22px] mr-3" />
+                <p className="font-sans font-[600] text-[16px] landing-[24px] text-[#FEFEFE]">{model.name}</p>
+              </label>
+              {model.status != "processing" &&
+                <div className="flex flex-row p-[8px] pl-[36px]">
+                  <Avatar key={model.samples[0].id} className="w-[128px] h-[128px]">
+                    <AvatarImage src={model.samples[0].uri} className="object-cover" />
+                  </Avatar>
+                  <Avatar key={model.samples[1].id} className="w-[128px] h-[128px]">
+                    <AvatarImage src={model.samples[1].uri} className="object-cover" />
+                  </Avatar>
+                </div>
+              }
+              <div className="flex flex-row items-center pl-[36px]">
+                {model.samples.slice(0, 3).map((sample) => (
+                  <Avatar key={sample.id} className="w-8 h-8">
+                    <AvatarImage src={sample.uri} className="object-cover" />
+                  </Avatar>
+                ))}
+                {model.samples.length > 3 && (
+                  <Badge className="rounded-full w-8 h-8" variant={"outline"}>
+                    +{model.samples.length - 3}
+                  </Badge>
+                )}
+                <p className="flex justify-end font-sans font-[500] text-[11px] landing-[16px] text-[#6C7275BF]">{model.status === "processing" ? "Generating..." : "Finished"}</p>
               </div>
-            }
-            <div className="flex flex-row items-center pl-[36px]">
-              {model.samples.slice(0, 3).map((sample) => (
-                <Avatar key={sample.id} className="w-8 h-8">
-                  <AvatarImage src={sample.uri} className="object-cover" />
-                </Avatar>
-              ))}
-              {model.samples.length > 3 && (
-                <Badge className="rounded-full w-8 h-8" variant={"outline"}>
-                  +{model.samples.length - 3}
-                </Badge>
-              )}
-              <p className="flex justify-end font-sans font-[500] text-[11px] landing-[16px] text-[#6C7275BF]">{model.status === "processing" ? "Generating..." : "Finished"}</p>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div >
   </>

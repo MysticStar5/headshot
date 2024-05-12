@@ -62,7 +62,7 @@ export default function TrainModelZone() {
       });
 
       button.on('cancel', (args: any): Promise<boolean | void> => {
-        setPlayed(false);
+        setPlayed(true);
         return Promise.resolve(true);
       });
 
