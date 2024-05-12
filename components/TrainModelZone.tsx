@@ -52,11 +52,17 @@ export default function TrainModelZone() {
     if (button) {
       button.on('success', (args: any): Promise<boolean | void> => {
         setPlayed(true);
+        toast({
+          title: "Paid",
+          description:
+            "$5 is successfully paid.",
+          duration: 3000,
+        });
         return Promise.resolve(true);
       });
 
       button.on('cancel', (args: any): Promise<boolean | void> => {
-        setPlayed(true);
+        setPlayed(false);
         return Promise.resolve(true);
       });
 
