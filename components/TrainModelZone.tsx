@@ -222,10 +222,7 @@ export default function TrainModelZone() {
     <div>
       <Form {...form}>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            form.handleSubmit(onSubmit);
-          }}
+          onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-[20px] p-[24px] rounded-md bg-[#141718]"
         >
           <FormField
