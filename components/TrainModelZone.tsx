@@ -16,7 +16,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+import code from '@code-wallet/elements';
+
 import { useDropzone } from "react-dropzone";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FaFemale, FaImages, FaMale, FaRainbow } from "react-icons/fa";
@@ -36,6 +39,28 @@ export default function TrainModelZone() {
   const router = useRouter();
 
   const [played, setPlayed] = useState(false);
+
+  const el = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const { button } = code.elements.create('button', {
+      currency: 'usd',
+      destination: 'A2oV4BgWVqEMAc25UjPKx12Urmhs5HiXL8kyGJC5gWs4',
+      amount: 0.05,
+    });
+
+    if (button) {
+      button.on('success', () => {
+        setPlayed(true);
+      });
+
+      button.on('cancel', () => {
+        setPlayed(true);
+      });
+
+      button.mount(el.current!);
+    }
+  }, []);
 
   const form = useForm<FormInput>({
     resolver: zodResolver(fileUploadFormSchema),
@@ -414,11 +439,12 @@ export default function TrainModelZone() {
                 <p className="font-sans font-[600] text-[24px] landing-[40px] text-center text-[#FEFEFE]">Generate image for $5</p>
               </div>
               <div className="gap-[16px] text-center">
-                <Button type="button" className="w-[252px] h-[50px] rounded-[6px] py-[8px] px-[16px] gap-[8px] bg-[#FEFEFE] hover:bg-[#343839] text-[18px] text-[#141718]" onClick={() => setPlayed(true)}>
+                <div ref={el} />
+                {/* <Button type="button" className="w-[252px] h-[50px] rounded-[6px] py-[8px] px-[16px] gap-[8px] bg-[#FEFEFE] hover:bg-[#343839] text-[18px] text-[#141718]" onClick={() => setPlayed(true)}>
                   <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block w-7 h-7 mr-4"><path d="M6.8162 9.96424C8.50269 9.96424 9.87999 8.60099 9.87999 6.90045C9.87999 5.19991 8.51674 3.83667 6.8162 3.83667C5.11566 3.83667 3.75242 5.19991 3.75242 6.90045C3.75242 8.60099 5.12972 9.96424 6.8162 9.96424Z" fill="currentColor"></path><path d="M19.0573 9.96424C20.7438 9.96424 22.1211 8.60099 22.1211 6.90045C22.1211 5.19991 20.7579 3.83667 19.0573 3.83667C17.3709 3.83667 15.9936 5.19991 15.9936 6.90045C15.9936 8.60099 17.3709 9.96424 19.0573 9.96424Z" fill="currentColor"></path><path d="M19.0573 22.2054C20.7438 22.2054 22.1211 20.8422 22.1211 19.1417C22.1211 17.4552 20.7579 16.0779 19.0573 16.0779C17.3709 16.0779 15.9936 17.4411 15.9936 19.1417C16.0076 20.8282 17.3709 22.2054 19.0573 22.2054Z" fill="currentColor"></path><path d="M6.8162 22.2054C8.50269 22.2054 9.87999 20.8422 9.87999 19.1417C9.87999 17.4552 8.51674 16.0779 6.8162 16.0779C5.11566 16.0779 3.75242 17.4411 3.75242 19.1417C3.76647 20.8282 5.12972 22.2054 6.8162 22.2054Z" fill="currentColor"></path><path d="M6.88648 16.0918C8.57297 16.0918 9.95027 14.7285 9.95027 13.028C9.93621 11.3415 8.57297 9.97827 6.88648 9.97827C5.19999 9.97827 3.8227 11.3415 3.8227 13.0421C3.8227 14.7145 5.19999 16.0918 6.88648 16.0918Z" fill="currentColor"></path><path d="M12.9438 9.99231C14.6303 9.99231 16.0076 8.62907 16.0076 6.92853C16.0076 5.24204 14.6444 3.86475 12.9438 3.86475C11.2573 3.86475 9.88004 5.22799 9.88004 6.92853C9.88004 8.62907 11.2573 9.99231 12.9438 9.99231Z" fill="currentColor"></path><path d="M12.9438 25.9999C13.9978 25.9999 14.8551 25.1427 14.8551 24.0886C14.8551 23.0345 13.9978 22.1772 12.9438 22.1772C11.8897 22.1772 11.0324 23.0345 11.0324 24.0886C11.0324 25.1427 11.8897 25.9999 12.9438 25.9999Z" fill="currentColor"></path><path d="M12.9438 3.8227C13.9978 3.8227 14.8551 2.96541 14.8551 1.91135C14.8551 0.857297 13.9978 0 12.9438 0C11.8897 0 11.0324 0.857297 11.0324 1.91135C11.0324 2.96541 11.8897 3.8227 12.9438 3.8227Z" fill="currentColor"></path><path d="M1.91135 14.9394C2.96541 14.9394 3.8227 14.0821 3.8227 13.0281C3.8227 11.974 2.96541 11.1167 1.91135 11.1167C0.857297 11.1167 0 11.974 0 13.0281C0 14.0821 0.857297 14.9394 1.91135 14.9394Z" fill="currentColor"></path><path d="M24.0324 14.9394C25.0865 14.9394 25.9438 14.0821 25.9438 13.0281C25.9438 11.974 25.0865 11.1167 24.0324 11.1167C22.9784 11.1167 22.1211 11.974 22.1211 13.0281C22.1211 14.0821 22.9643 14.9394 24.0324 14.9394Z" fill="currentColor"></path><path d="M12.9438 22.1774C14.6303 22.1774 16.0076 20.8141 16.0076 19.1136C16.0076 17.4271 14.6444 16.0498 12.9438 16.0498C11.2573 16.0498 9.88004 17.413 9.88004 19.1136C9.88004 20.8001 11.2573 22.1774 12.9438 22.1774Z" fill="currentColor"></path></svg>
                   Pay with Code
                   {stripeIsConfigured && <span className="ml-1">(1 Credit)</span>}
-                </Button>
+                </Button> */}
               </div>
             </div> :
             <div className="flex flex-col gap-[12px] mb-[40px]">

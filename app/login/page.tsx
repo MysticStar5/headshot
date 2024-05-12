@@ -24,6 +24,8 @@ export default async function LoginPage({
   const headersList = headers();
   const host = headersList.get("host");
 
+  console.log(host);
+
   return (
     <div className="flex flex-col flex-1 w-full bg-[#141718]">
       <Login host={host} searchParams={searchParams} />

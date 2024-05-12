@@ -45,6 +45,7 @@ export default function ClientSideModelsList({
         "postgres_changes",
         { event: "*", schema: "public", table: "models" },
         async (payload: any) => {
+
           const samples = await supabase
             .from("samples")
             .select("*")
@@ -136,10 +137,10 @@ export default function ClientSideModelsList({
             {model.status != "processing" &&
               <div className="flex flex-row p-[8px] pl-[36px]">
                 <Avatar key={model.samples[0].id} className="w-[128px] h-[128px]">
-                  <AvatarImage src={model.samples[0].uri} className="object-cover rounded-md" />
+                  <AvatarImage src={model.samples[0].uri} className="object-cover" />
                 </Avatar>
                 <Avatar key={model.samples[1].id} className="w-[128px] h-[128px]">
-                  <AvatarImage src={model.samples[1].uri} className="object-cover rounded-md" />
+                  <AvatarImage src={model.samples[1].uri} className="object-cover" />
                 </Avatar>
               </div>
             }
