@@ -63,7 +63,7 @@ export default function TrainModelZone() {
       });
 
       button.on('cancel', (args: any): Promise<boolean | void> => {
-        setPlayed(true);
+        setPlayed(false);
         return Promise.resolve(true);
       });
 
@@ -308,7 +308,7 @@ export default function TrainModelZone() {
             </RadioGroup> */}
 
           <div className="flex flex-col gap-4 p-[20px] rounded-md bg-[#232627]">
-            <div className="flex flex-row h-[36px] gap-[12px] justify-between">
+            <div className="flex flex-row gap-[12px]">
               <Combobox title={"Gender"} options={[{ key: "Male", value: "man" }, { key: "Female", value: "woman" }, { key: "Non-binary", value: "person" }]} value={modelType} setValue={(value: any) => {
                 form.setValue("type", value);
               }} />
